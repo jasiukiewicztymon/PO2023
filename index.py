@@ -1,20 +1,11 @@
 import os
 from dotenv import load_dotenv
-import openai
+from ChatOpenAI import Chat
 
 load_dotenv()
-openai.organization = "org-20kxNVXpHtlPhYs5dP1Mukwu"
-openai.api_key = os.getenv("OPENAI_API_KEY")
-openai.Model.list()
 
-response = openai.ChatCompletion.create(
-    model="gpt-3.5-turbo",
-    messages=[
-        {"role": "system", "content": "You are a helpful assistant."},
-        {"role": "user", "content": "Who won the world series in 2020?"},
-        {"role": "assistant", "content": "The Los Angeles Dodgers won the World Series in 2020."},
-        {"role": "user", "content": "Where was it played?"}
-    ]
-)
+c = Chat(None, os.getenv("OPENAI_API_KEY"), Chat.MODEL["GPT_3.5"])
 
-print(response)
+print(c.chat("Quel jour sommes-nous? Donne moi le jour en anglais."))
+
+print(c.history)
