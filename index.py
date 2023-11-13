@@ -17,15 +17,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-chats = {
-
-}
+chats = {}
 
 
 @app.post("/chat/")
-async def create_chat():
+async def create_chat(context: Annotated[list[str] | None, Header()] = None):
     suuid = str(uuid.uuid4())
-    chats[suuid] = Chat(None, os.getenv(
+    chats[suuid] = Chat(str(context), os.getenv(
         "OPENAI_API_KEY"), Chat.MODEL["GPT_3.5"])
     return {"chatid": suuid}
 
@@ -37,6 +35,13 @@ async def ask_chat(chatid, question: Annotated[list[str] | None, Header()] = Non
     else:
         r = chats[chatid].chat(str(question))
         return {"status": "success", "content": r}
+
+@app.get("/chat/{chatid}/")
+async def get_chat(chatid):
+    if (chatid not in list(chats.keys())):
+        return {"status": "error", "message": "Unfound chat"}
+    else:
+        return { "status": "success", "content": chats[chatid].history, "model": chats[chatid].model,  }
 
 
 @app.get("/")
