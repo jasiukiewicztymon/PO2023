@@ -1,9 +1,12 @@
 import os
 from dotenv import load_dotenv
 from ChatOpenAI import Chat
+
 from typing import Union, Annotated
 from fastapi import FastAPI, Header
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+
 import uuid
 
 load_dotenv()
@@ -21,10 +24,10 @@ chats = {}
 
 
 @app.post("/chat/")
-async def create_chat(context: Annotated[list[str] | None, Header()] = None):
+async def create_chat(context: Annotated[list[str] | None, Header()] = None, model: Annotated[list[str] | None, Header()] = None):
     suuid = str(uuid.uuid4())
-    chats[suuid] = Chat(str(context), os.getenv(
-        "OPENAI_API_KEY"), Chat.MODEL["GPT_3.5"])
+    chats[suuid] = Chat(str(context) if context != None else None, os.getenv(
+        "OPENAI_API_KEY"), model)
     return {"chatid": suuid}
 
 
@@ -48,6 +51,4 @@ async def get_chat(chatid):
 def read_root():
     return {"Hello": "World"}
 
-# c = Chat(None, os.getenv("OPENAI_API_KEY"), Chat.MODEL["GPT_3.5"])
-# print(c.chat("Quel jour sommes-nous? Donne moi le jour en anglais."))
-# print(c.history)
+app.mount("/", StaticFiles(directory="c"), name="static")

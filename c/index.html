@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        var chats = [];
+        var chatid = getCookie('chatid');
+
+        async function start_chatting(context, model) {
+            let r = await fetch("/chat/", {
+                method: "POST",
+                mode: "no-cors",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Model': model
+                }
+            })
+            if (typeof context == "string" && context != "")
+                r = await fetch("/chat/", {
+                    method: "POST",
+                    mode: "no-cors",
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Context': context,
+                        'Model': model
+                    }
+                })
+            chatid = await r.json();
+            chatid = chatid.chatid;
+            document.cookie = `${document.cookie} chatid=${chatid};`;
+        }
+        async function chat(message) {
+            let r = await fetch(`/chat/${chatid}/`, {
+                method: "POST",
+                mode: "no-cors",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Question': message
+                }
+            })
+            
+            let res = await r.json();
+            console.log(res) 
+        }
+        async function get_chat() {
+            let r = await fetch(`/chat/${chatid}/`, {
+                method: "GET", 
+                mode: "no-cors",
+                headers: { 
+                    'Content-Type': 'application/json',
+                }
+            })
+            
+            let res = await r.json();
+            console.log(res)
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
