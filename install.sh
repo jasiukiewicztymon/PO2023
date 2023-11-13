@@ -1,1 +1,1 @@
-sudo pip install openai python-dotenv
+sudo pip install openai python-dotenv fastapi "uvicorn[standard]"
