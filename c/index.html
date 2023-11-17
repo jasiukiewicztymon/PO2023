@@ -27,21 +27,20 @@
     <div id="layout">
         <div id="resizer">
             <header>
-                <h1><span>Bienvenu</span><span>aux</span><span>portes</span> <span>ouvertes</span><span>du</span><span><span>C</span><span>P</span><span>N</span><span>E</span></span></h1>
+                <h1><span>Bienvenue</span><span>aux</span><span>portes</span> <span>ouvertes</span><span>du</span><span><span>C</span><span>P</span><span>N</span><span>E</span></span></h1>
                 <p>
-                    <b>Quel est notre projet?</b> Notre projet à était de réaliser un site permettant d'utiliser une API <i>(interface de programation)</i> pour envoyer des requêtes à ChatGPT et faire une sorte de chatbot.
+                    <b>Quel est notre projet?</b> Notre projet consiste à réaliser un site permettant d'utiliser une API <i>(interface de programation)</i> pour envoyer des requêtes à ChatGPT et faire une sorte de chatbot.
                 </p>
             </header>
             <div id="chat">
                 <div id="context">
                     <textarea id="contextInput" placeholder="Donnez le context de la conversation" rows="1" spellcheck="false" oninput="textareaModifier(event, 2, 1)"></textarea>
-                    <button id="restart"><span class="material-symbols-outlined">restart_alt</span></button>
+                    <button id="restart" onclick="restart(event)"><span class="material-symbols-outlined">restart_alt</span></button>
                 </div>
                 <div id="chatclouds">
-                    
                 </div>
                 <div id="chatInput">
-                    <textarea id="userInput" rows="2" spellcheck="false" placeholder="Disscutez avec le chatbot!" oninput="textareaModifier(event, 3, 2)"></textarea>
+                    <textarea id="userInput" rows="2" spellcheck="false" placeholder="Discutez avec le chatbot!" oninput="textareaModifier(event, 3, 2)"></textarea>
                     <button id="send" onclick="ask(event)"><span class="material-symbols-outlined">send</span></button>
                 </div>
             </div>

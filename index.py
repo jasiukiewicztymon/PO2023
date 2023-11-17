@@ -28,16 +28,13 @@ async def create_chat(body: str = Body()):
     data = json.loads(body)
 
     suuid = str(uuid.uuid4())
-    chats[suuid] = Chat(str(data['context']) if data['context'] != None else None, os.getenv(
-        "OPENAI_API_KEY"), data['model'])
+    chats[suuid] = Chat(str(data['context']) if 'context' in data else None, data['model'] if 'model' in data else '')
     return {"chatid": suuid}
 
 
 @app.post("/chat/{chatid}/")
 async def ask_chat(chatid, body: str = Body()):
     data = json.loads(body)
-
-    return { 'question': body}
 
     if (chatid not in list(chats.keys())):
         return {"status": "error", "message": "Unknown chat ID"}

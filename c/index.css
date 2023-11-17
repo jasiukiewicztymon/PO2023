@@ -134,6 +134,7 @@ textarea {
 }
 #chatclouds div {
   max-width: 300px;
+  width: fit-content;
   word-wrap: break-word;
   padding: 10px;
   border-radius: 8px;

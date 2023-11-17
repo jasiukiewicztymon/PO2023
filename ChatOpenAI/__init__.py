@@ -1,5 +1,5 @@
 from openai import OpenAI
-
+import os
 
 class Chat:
     MODEL = {
@@ -7,15 +7,15 @@ class Chat:
         "GPT_4": "gpt-4"
     }
 
-    def __init__(self, context, api_key, model):
+    def __init__(self, context, model):
         if (model in list(self.MODEL.keys())):
             self.model = self.MODEL[model]
         else:
             self.model = "gpt-3.5-turbo"
 
-        self.client = OpenAI()
         try:
-            self.client.api_key = api_key
+            self.client = OpenAI()
+            #self.client.api_key = os.environ.get("OPENAI_API_KEY")
             self.valid_key = True
         except:
             self.valid_key = False
