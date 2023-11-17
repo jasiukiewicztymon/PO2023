@@ -1,8 +1,10 @@
 var chats = [];
 var chatid = Cookies.get('chatid');
 
+if (Cookies.get('chatid')) get_chat();
+else start_chatting();
 // initialization of chatting at the begining 
-start_chatting();
+
 
 function ask(e) {
   let userinput = document.getElementById('userInput').value;
@@ -21,7 +23,7 @@ function ask(e) {
 function restart(e) {
   s = document.getElementById('send');
   s.disabled  = "true";
-  document.getElementById('chatclouds').clearChildren();
+  document.getElementById('chatclouds').replaceChildren();
   start_chatting(document.getElementById('contextInput').value);
   document.getElementById('contextInput').value = "";
   s.removeAttribute('disabled')

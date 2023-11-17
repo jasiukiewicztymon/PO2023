@@ -13,6 +13,7 @@ async function start_chatting(context, model) {
   chatid = await r.json();
   //console.log(chatid)
   chatid = chatid.chatid;
+  console.warn('Changed API')
   Cookies.set('chatid', chatid);
 }
 async function chat(message) {
@@ -22,7 +23,7 @@ async function chat(message) {
 
   s.disabled  = "true";
 
-  console.log(ui, s)
+  //console.log(ui, s)
 
   let r = await fetch(`/chat/${chatid}/`, {
       method: "POST",
@@ -55,5 +56,18 @@ async function get_chat() {
   })
   
   let res = await r.json();
+
   console.log(res)
+
+  if (res.status == 'error' || res.content.length == 0) start_chatting()
+  else {
+    let i = 0;
+    if (res.content[0].role != 'user') i++;
+  
+    for (;i<res.content.length;i++) {
+      let u = document.createElement('div');
+      u.innerText = res.content[i].content;
+      document.getElementById('chatclouds').appendChild(u);
+    }
+  }
 }

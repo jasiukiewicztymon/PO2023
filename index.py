@@ -36,6 +36,8 @@ async def create_chat(body: str = Body()):
 async def ask_chat(chatid, body: str = Body()):
     data = json.loads(body)
 
+    print(chats[chatid].history)
+
     if (chatid not in list(chats.keys())):
         return {"status": "error", "message": "Unknown chat ID"}
     else:
