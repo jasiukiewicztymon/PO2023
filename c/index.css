@@ -125,11 +125,13 @@ textarea {
 }
 
 #chatclouds {
-  min-height: 700px;
+  min-height: 680px;
   overflow: auto;
   display: flex;
   flex-direction: column;
   padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   gap: 10px;
 }
 #chatclouds div {

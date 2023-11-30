@@ -19,12 +19,12 @@ window.onload = (e) => {
     let cc = chat.querySelector('#chatclouds'),
         d = (chat.querySelector('#context').offsetHeight + chat.querySelector('#chatInput').offsetHeight);
 
-    min = 700;
+    min = 680;
     h = chat.offsetHeight - d;
 
     //console.log(h, min)
 
-    if (h > min) cc.style.height = `calc(100% - ${d}px)`
+    if (h > min) cc.style.height = `calc(100% - ${d + 20}px)`
     else cc.style.height = `${min}px`
 }
 

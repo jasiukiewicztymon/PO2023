@@ -1,55 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"></script>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
     <style>
-        .material-symbols-outlined {
-          font-variation-settings:
-          'FILL' 0,
-          'wght' 400,
-          'GRAD' 0,
-          'opsz' 24
-        }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
     </style>
     <script src="style.js"></script>
     <script src="api.js"></script>
     <script src="index.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="layout">
-        <div id="resizer">
-            <header>
-                <h1><span>Bienvenue</span><span>aux</span><span>portes</span> <span>ouvertes</span><span>du</span><span><span>C</span><span>P</span><span>N</span><span>E</span></span></h1>
-                <p>
-                    <b>Quel est notre projet?</b> Notre projet consiste à réaliser un site permettant d'utiliser une API <i>(interface de programation)</i> pour envoyer des requêtes à ChatGPT et faire une sorte de chatbot.
-                </p>
-            </header>
-            <div id="chat">
-                <div id="context">
-                    <textarea id="contextInput" placeholder="Donnez le context de la conversation" rows="1" spellcheck="false" oninput="textareaModifier(event, 2, 1)"></textarea>
-                    <button id="restart" onclick="restart(event)"><span class="material-symbols-outlined">restart_alt</span></button>
-                </div>
-                <div id="chatclouds">
-                </div>
-                <div id="chatInput">
-                    <textarea id="userInput" rows="2" spellcheck="false" placeholder="Discutez avec le chatbot!" oninput="textareaModifier(event, 3, 2)"></textarea>
-                    <button id="send" onclick="ask(event)"><span class="material-symbols-outlined">send</span></button>
-                </div>
-            </div>
-            <footer>
-                <div>
-                    Portes ouvertes CPNE-TI 2023
-                </div>
-            </footer>
+      <div id="resizer">
+        <header>
+          <h1>
+            <span>Bienvenue</span><span>aux</span><span>portes</span>
+            <span>ouvertes</span><span>du</span
+            ><span
+              ><span>C</span><span>P</span><span>N</span><span>E</span></span
+            >
+          </h1>
+          <p>
+            <b>Quel est notre projet?</b> Notre projet consiste à réaliser un
+            site permettant d'utiliser une API
+            <i>(interface de programation)</i> pour envoyer des requêtes à
+            ChatGPT et faire une sorte de chatbot.
+          </p>
+        </header>
+        <div id="chat">
+          <div id="context">
+            <textarea
+              id="contextInput"
+              placeholder="Donnez le context de la conversation"
+              rows="1"
+              spellcheck="false"
+              oninput="textareaModifier(event, 2, 1)"
+            ></textarea>
+            <button id="restart" onclick="restart(event)">
+              <span class="material-symbols-outlined">restart_alt</span>
+            </button>
+          </div>
+          <div id="chatclouds"></div>
+          <div id="chatInput">
+            <textarea
+              id="userInput"
+              rows="2"
+              spellcheck="false"
+              placeholder="Discutez avec le chatbot!"
+              oninput="textareaModifier(event, 3, 2)"
+            ></textarea>
+            <button id="send" onclick="ask(event)">
+              <span class="material-symbols-outlined">send</span>
+            </button>
+          </div>
         </div>
+        <footer>
+          <div>Portes ouvertes CPNE-TI 2023</div>
+        </footer>
+      </div>
     </div>
-</body>
+  </body>
 </html>
