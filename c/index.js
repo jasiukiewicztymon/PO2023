@@ -18,6 +18,7 @@ function ask(e) {
   u.innerText = userinput;
   document.getElementById('chatclouds').appendChild(u);
   document.getElementById('userInput').value = "";
+  document.getElementById('userInput').rows = 2;
 }
 
 function restart(e) {
