@@ -41,6 +41,7 @@ footer > div {
   text-align: center;
   font-weight: bold;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 h1 {
   display: flex;
@@ -125,7 +126,7 @@ textarea {
 }
 
 #chatclouds {
-  min-height: 680px;
+  min-height: 660px;
   overflow: auto;
   display: flex;
   flex-direction: column;
